@@ -1,10 +1,13 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const pubsubService = require('./pubsubService')
+const {startup, tutorial} = require('./db')
 
 dotenv.config()
 
 const app = express()
+
+startup()
 
 pubsubService.subcribeToTopic()
 

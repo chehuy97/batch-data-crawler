@@ -3,7 +3,6 @@ const mockoonApi = require('./mockoonAPI')
 const pubsubService = require('./pubsubService')
 
 const  myCronTask = async () => {
-    console.log("CRONJOB TASK CALLED")
     try {
         const tutorials = await mockoonApi.getTutorials()
         console.log("TUTORIALS", tutorials);
@@ -15,5 +14,6 @@ const  myCronTask = async () => {
 
 exports.runCronJob = () => {
     console.log('cronjob start')
-    cron.schedule('* * * * *', myCronTask);
+    const cronJob = cron.schedule('* * * * *', myCronTask);
+    return cronJob
 }
